@@ -13,8 +13,8 @@ UPDATE (
         LEFT JOIN activity_element      aele ON aele.activity_element_id = wt.second_activity_id
         LEFT JOIN activity_subelement   asub ON asub.activity_subelement_id = wt.third_activity_id
         LEFT JOIN activity_software     asoft ON asoft.activity_software_id = wt.software_activity_id
-    WHERE
-        emp.employee_login = 'mjankowski'
+    WHERE 
+        mact.main_activity_name IS NOT NULL
 )
 SET
     workset_id = (
