@@ -1,6 +1,5 @@
 SELECT
-    pt.project_number,
-    pt.project_name,
+    pt.project_number || ' - ' || cr.customer_name || ' - ' || pt.project_name AS "PROJECT_NAME",    
     ( (
         SELECT
             round(nvl(SUM(wt.end_time - wt.start_time) * 24, 0), 0)
@@ -19,5 +18,6 @@ SELECT
     ) ) AS "CZAS"
 FROM
     project pt
+    LEFT JOIN customer cr ON cr.customer_id = pt.customer_id
 ORDER BY
     "CZAS" DESC;
