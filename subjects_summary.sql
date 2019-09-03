@@ -23,6 +23,6 @@ SELECT
 	(np.CZAS + op.CZAS) as CZAS
 FROM
 	new_project np
-	FULL JOIN old_project op
+	FULL JOIN old_project op ON np.PROJECT_NAME=op.PROJECT_NAME
 ORDER BY
 	2 DESC;
